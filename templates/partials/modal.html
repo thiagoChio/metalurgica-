@@ -1,0 +1,20 @@
+{# Um unico modal serve servicos e projetos: menos DOM, um so foco a gerenciar. #}
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal__dialog" data-modal-dialog>
+    <button class="modal__close" type="button" data-modal-close aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </button>
+    <div class="modal__body" data-modal-body></div>
+  </div>
+</div>
+
+{# Dados dos serviços e projetos entregues como JSON para o modal.
+   Renderizado pelo servidor: nada é buscado por rede ao abrir. #}
+<script type="application/json" data-services-json>
+{{ services_json | tojson }}
+</script>
+<script type="application/json" data-projects-json>
+{{ projects_json | tojson }}
+</script>

@@ -1,0 +1,28 @@
+<section class="section section--dark" id="area">
+  <div class="shell">
+    <div class="area">
+      <div class="section-head" style="margin:0">
+        <p class="eyebrow">Onde atendemos</p>
+        <h2 data-reveal>Estruturas metálicas em<br>{{ company.service_area }}</h2>
+        <p class="section-head__text" data-reveal>
+          A oficina fica em {{ company.location_label }}. Para obras fora da região, consulte.
+        </p>
+        <p style="color:var(--text-muted);font-size:.94rem;margin-top:var(--space-3)">
+          {{ company.address }}
+        </p>
+        <div class="hero__specs" data-reveal style="margin-top:var(--space-4)">
+          <div class="hero__spec"><b>{{ company.phone_display }}</b><span>WhatsApp — {{ company.owner }}</span></div>
+          <div class="hero__spec"><b>{{ company.phone_alt_display }}</b><span>WhatsApp — {{ company.partner }}</span></div>
+        </div>
+      </div>
+      <div class="area__map" data-reveal>
+        {% if company.maps_embed_url %}
+          <iframe src="{{ company.maps_embed_url }}" loading="lazy" title="Mapa da localização"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {% else %}
+          [ MAPA — cole o embed do Google Maps em Company.maps_embed_url ]
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

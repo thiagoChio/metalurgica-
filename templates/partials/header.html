@@ -1,0 +1,52 @@
+<header class="header" data-header>
+  <div class="shell header__inner">
+    <a class="brand" href="#topo" aria-label="{{ company.name }} — início">
+      {% include "partials/brand.html" %}
+      <span class="brand__name">{{ company.name }}
+        <span class="brand__tag">Estruturas metálicas</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegacao principal">
+      {% for id, rotulo in [
+        ('servicos','Serviços'), ('projetos','Projetos'), ('processo','Processo'),
+        ('sobre','Sobre'), ('faq','FAQ'), ('orcamento','Contato')] %}
+        <a class="nav__link" href="#{{ id }}" data-nav-link>{{ rotulo }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--sm btn--desktop" href="#orcamento">
+        <span class="btn__label">Solicitar orçamento</span>
+        <svg class="btn__arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+          <path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+      <button class="burger" type="button" data-burger aria-expanded="false"
+              aria-controls="menu-mobile" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="menu-mobile" data-mobile-panel>
+  <nav class="mobile-panel__list" aria-label="Navegacao mobile">
+    {% for id, rotulo in [
+      ('servicos','Serviços'), ('projetos','Projetos'), ('processo','Processo'),
+      ('sobre','Sobre'), ('faq','FAQ'), ('orcamento','Contato')] %}
+      <a class="mobile-panel__link" href="#{{ id }}" data-mobile-link>
+        <span>0{{ loop.index }}</span>{{ rotulo }}
+      </a>
+    {% endfor %}
+  </nav>
+  <div class="mobile-panel__footer">
+    <a class="btn btn--block" href="#orcamento" data-mobile-link>
+      <span class="btn__label">Solicitar orçamento</span>
+    </a>
+    <a class="btn btn--ghost btn--block" href="{{ content.whatsapp_for_service() }}"
+       target="_blank" rel="noopener">
+      <span class="btn__label">Falar no WhatsApp</span>
+    </a>
+  </div>
+</div>

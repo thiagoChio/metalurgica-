@@ -1,0 +1,99 @@
+/* =============================================================
+   TOKENS — a fonte unica de verdade visual.
+   Trocar um valor aqui muda o site inteiro de forma coerente.
+   ============================================================= */
+
+:root {
+  /* ---------------------------------------- COR: navy da Correa Metalúrgica
+     Amostrado do logo e do cartão de visita da empresa. */
+  --navy-950: #0A0C22;
+  --navy-900: #101331;
+  --navy-850: #14183C;
+  --navy-800: #17173B;   /* navy do logo */
+  --navy-700: #1E2452;
+  --navy-600: #2A3168;
+  --navy-500: #3A4288;
+
+  /* ------------------------------------------ COR: prata / cinza da marca */
+  --steel-950: #07091A;
+  --steel-900: #0E1128;
+  --steel-800: #171B38;
+  --steel-700: #242A4C;
+  --steel-500: #6E748F;
+  --steel-300: #A7ADC4;
+  --steel-100: #E6E8F0;
+  --steel-050: #F4F5F9;
+  --white: #ffffff;
+
+  /* ------------------------------------------------- COR: dourado da marca
+     Único acento do site — o mesmo dourado do "C" do monograma.
+     Usado com parcimônia: linha de corte, número de etapa, foco. */
+  --weld-500: #F4C93E;
+  --weld-400: #FFD965;
+  --weld-glow: rgba(244, 201, 62, .26);
+
+  /* --------------------------------------------------------- SEMANTICA */
+  --bg: var(--navy-950);
+  --bg-alt: var(--navy-900);
+  --bg-light: var(--white);
+  --bg-light-alt: var(--steel-050);
+
+  --text: #ECEEF6;
+  --text-muted: var(--steel-300);
+  --text-dark: var(--steel-900);
+  --text-dark-muted: var(--steel-500);
+
+  --line: rgba(255, 255, 255, .10);
+  --line-strong: rgba(255, 255, 255, .20);
+  --line-dark: rgba(23, 23, 59, .14);
+
+  --danger: #E5484D;
+  --success: #3DBE7A;
+
+  /* ------------------------------------------------------- TIPOGRAFIA */
+  --font-display: "Space Grotesk", "Manrope", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-eyebrow: clamp(.68rem, .62rem + .2vw, .78rem);
+  --fs-body: clamp(.98rem, .94rem + .18vw, 1.06rem);
+  --fs-lead: clamp(1.05rem, .98rem + .45vw, 1.28rem);
+  --fs-h4: clamp(1.05rem, .98rem + .4vw, 1.25rem);
+  --fs-h3: clamp(1.3rem, 1.1rem + .9vw, 1.9rem);
+  --fs-h2: clamp(1.9rem, 1.35rem + 2.4vw, 3.4rem);
+  --fs-h1: clamp(2.6rem, 1.5rem + 5vw, 6rem);
+  --fs-mega: clamp(3.4rem, 1.6rem + 8vw, 9rem);
+
+  --tracking-tight: -.03em;
+  --tracking-wide: .18em;
+
+  /* ---------------------------------------------------------- ESPACO */
+  --space-1: .25rem;  --space-2: .5rem;   --space-3: .75rem;
+  --space-4: 1rem;    --space-5: 1.5rem;  --space-6: 2rem;
+  --space-7: 3rem;    --space-8: 4rem;    --space-9: 6rem;
+  --space-10: 8rem;
+
+  --section-y: clamp(5rem, 3.2rem + 7.5vw, 10rem);
+  --gutter: clamp(1.25rem, .6rem + 3vw, 4rem);
+  --maxw: 1440px;
+  --maxw-text: 68ch;
+
+  /* --------------------------------------------------------- MOVIMENTO */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --dur-fast: .18s;
+  --dur: .38s;
+  --dur-slow: .9s;
+
+  /* ------------------------------------------------------------ FORMA */
+  --radius: 2px;          /* aco cortado, nao plastico arredondado */
+  --radius-lg: 3px;
+  --header-h: 88px;
+  --header-h-compact: 68px;
+
+  --shadow-soft: 0 20px 50px -30px rgba(0, 0, 0, .9);
+  --shadow-card: 0 30px 60px -35px rgba(0, 0, 0, .85);
+  --z-header: 100;
+  --z-float: 90;
+  --z-modal: 200;
+}

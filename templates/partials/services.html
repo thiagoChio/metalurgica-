@@ -1,0 +1,51 @@
+<section class="section section--deep" id="servicos">
+  <div class="shell">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow">Serviços</p>
+        <h2 class="section-head__title" data-reveal>O que podemos construir para você?</h2>
+      </div>
+      <p class="section-head__text" data-reveal>
+        Clique para ver aplicações e materiais de cada um.
+      </p>
+    </div>
+
+    <div class="card-grid card-grid--3 stagger" data-reveal-group>
+      {% for servico in content.services %}
+      <button class="service" type="button"
+              data-service="{{ servico.slug }}"
+              data-cursor-hover="Explorar"
+              aria-haspopup="dialog"
+              aria-label="Ver detalhes do serviço {{ servico.title }}">
+        <span class="service__num">{{ servico.number }}</span>
+        <span class="service__figure">
+          <img src="/media/blueprint/servico-{{ servico.slug }}.svg"
+               alt="Desenho técnico ilustrativo — {{ servico.title }}"
+               loading="lazy" decoding="async" width="1200" height="900">
+        </span>
+        <span class="service__title">{{ servico.title }}</span>
+        <span class="service__text">{{ servico.summary }}</span>
+        <span class="service__more">
+          Detalhes
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="band" data-reveal style="margin-top: var(--space-7)">
+      <div class="band__text">
+        <b>Não encontrou o que precisa?</b>
+        <span>Descreva a peça — boa parte do que fazemos não cabe em categoria.</span>
+      </div>
+      <div class="band__actions">
+        <a class="btn btn--sm" href="#orcamento"><span class="btn__label">Solicitar orçamento</span></a>
+        <a class="btn btn--ghost btn--sm" href="{{ content.whatsapp_for_service() }}" target="_blank" rel="noopener">
+          <span class="btn__label">Falar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

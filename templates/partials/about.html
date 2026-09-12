@@ -1,0 +1,35 @@
+<section class="section section--dark" id="sobre">
+  <div class="shell">
+    <div class="about">
+      <div class="about__text">
+        <p class="eyebrow">A empresa</p>
+        <h2 data-reveal>Quem faz o seu projeto<br>atende você.</h2>
+        <p data-reveal>
+          A Correa Metalúrgica fica na Av. Canadá, no Santa Rosa, em Cuiabá. É de lá que
+          saem as coberturas, portões e estruturas que você vê aqui — cortados, soldados
+          e acabados na própria oficina.
+        </p>
+        <p data-reveal>
+          Quem responde o WhatsApp é {{ company.owner }}, {{ company.owner_role|lower }}.
+          Não há intermediário: a dúvida técnica é respondida por quem está na produção.
+        </p>
+        {% if draft %}
+        <p class="placeholder-note" data-reveal>
+          <b>[ COMPLETAR ]</b> Ano de fundação, tamanho da equipe e número de obras entregues
+          entram aqui assim que a empresa confirmar. Esta nota só aparece em desenvolvimento —
+          com <code>SITE_DEBUG=false</code> ela some.
+        </p>
+        {% endif %}
+      </div>
+
+      <aside class="about__panel" data-reveal>
+        <ul class="about__list">
+          <li><b>Oficina</b><span>{{ company.address }}</span></li>
+          <li><b>Atendemos</b><span>{{ company.service_area }}</span></li>
+          <li><b>{{ company.owner }}</b><span>{{ company.owner_role }} — {{ company.phone_display }}</span></li>
+          <li><b>{{ company.partner }}</b><span>Atendimento — {{ company.phone_alt_display }}</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>

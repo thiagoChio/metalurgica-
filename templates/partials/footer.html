@@ -1,0 +1,59 @@
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="#topo" aria-label="{{ company.name }} — início">
+          <img src="/static/img/marca/lockup-vertical.png"
+               alt="{{ company.name }} — metalúrgica e estruturas metálicas"
+               width="504" height="240" loading="lazy" decoding="async">
+        </a>
+        <p class="footer__tagline" style="font-size:.85rem">{{ company.location_label }}</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Serviços</h4>
+        <ul>
+          {% for servico in content.services[:6] %}
+          <li><a href="#servicos" data-service-link="{{ servico.slug }}">{{ servico.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="{{ content.whatsapp_for_service() }}" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="tel:+{{ company.whatsapp_raw }}">{{ company.phone_display }}</a></li>
+          <li><a href="tel:+{{ company.whatsapp_alt_raw }}">{{ company.phone_alt_display }}</a></li>
+          <li><a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
+          <li><span style="color:var(--steel-500);font-size:.9rem">{{ company.address }}</span></li>
+        </ul>
+        {% if company.visible_socials %}
+        <h4 style="margin-top:var(--space-5)">Redes</h4>
+        <ul>
+          {% for rede in company.visible_socials %}
+          <li><a href="{{ rede.url }}" target="_blank" rel="noopener">{{ rede.label }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span data-year></span> {{ company.name }}. Todos os direitos reservados.</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em">
+        {{ company.location_label }}
+      </span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,44 @@
+/* ============================== LAYOUT ============================== */
+.shell {
+  width: min(100% - var(--gutter) * 2, var(--maxw));
+  margin-inline: auto;
+}
+.shell--narrow { width: min(100% - var(--gutter) * 2, 1080px); }
+
+.section { padding-block: var(--section-y); position: relative; }
+.section--dark { background: var(--bg); color: var(--text); }
+.section--deep { background: linear-gradient(180deg, var(--steel-950), var(--navy-900) 60%, var(--steel-950)); }
+.section--light { background: var(--bg-light); color: var(--text-dark); }
+.section--light h2, .section--light h3 { color: var(--navy-800); }
+.section--tint { background: var(--bg-light-alt); color: var(--text-dark); }
+
+/* Cabecalho de secao ------------------------------------------------- */
+.section-head { display: grid; gap: var(--space-5); margin-bottom: var(--space-8); }
+.section-head--split {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  align-items: end; gap: var(--space-7);
+}
+.section-head__title { max-width: 20ch; }
+.section-head__text { color: var(--text-muted); max-width: 46ch; font-size: var(--fs-lead); }
+.section--light .section-head__text, .section--tint .section-head__text { color: var(--text-dark-muted); }
+
+/* Eyebrow: etiqueta tecnica ------------------------------------------ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-family: var(--font-mono); font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--steel-300);
+}
+.eyebrow::before {
+  content: ""; width: 34px; height: 1px; background: var(--weld-500);
+}
+.section--light .eyebrow, .section--tint .eyebrow { color: var(--text-dark-muted); }
+
+/* Regua tecnica que atravessa o site --------------------------------- */
+.rule {
+  height: 1px; border: 0;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+}
+.section--light .rule, .section--tint .rule {
+  background: linear-gradient(90deg, transparent, var(--line-dark) 12%, var(--line-dark) 88%, transparent);
+}

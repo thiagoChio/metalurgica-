@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Configuração local e dados recebidos (nunca vão para o GitHub)
+.env
+data/quotes/
+data/uploads/
+
+# Editor e sistema
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

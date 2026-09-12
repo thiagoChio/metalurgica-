@@ -1,0 +1,200 @@
+/* ================================ HERO ================================ */
+.hero {
+  position: relative; min-height: 100svh; display: grid; align-items: end;
+  padding-block: calc(var(--header-h) + var(--space-7)) var(--space-8);
+  overflow: hidden; isolation: isolate;
+  background: var(--navy-950);
+}
+/* Camada 1: fotografia real de obra da Correa Metalúrgica */
+.hero__media { position: absolute; inset: 0; z-index: -3; overflow: hidden; }
+.hero__media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 45%;
+  filter: saturate(.84) contrast(1.05);
+  transform: scale(1.06); transform-origin: center 40%;
+  animation: hero-in 2.6s var(--ease-out) forwards;
+}
+@keyframes hero-in {
+  from { transform: scale(1.14); opacity: .35; }
+  to   { transform: scale(1.06); opacity: 1; }
+}
+
+/* Camada 2: faíscas de solda — o elemento que a marca já usa no selo */
+.hero__canvas { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; }
+
+/* Camada 3: véu que garante contraste do texto sobre a foto */
+.hero__veil {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10,12,34,.70) 0%, rgba(10,12,34,.38) 28%, rgba(10,12,34,.97) 100%),
+    linear-gradient(90deg, rgba(10,12,34,.94) 0%, rgba(10,12,34,.50) 52%, rgba(10,12,34,.10) 82%);
+  opacity: 0; animation: veil-in 1.8s var(--ease-out) .1s forwards;
+}
+@keyframes veil-in { to { opacity: 1; } }
+
+.hero__inner { display: grid; gap: var(--space-6); position: relative; }
+.hero__eyebrow, .hero__title span, .hero__lead, .hero__actions, .hero__scroll, .hero__aside {
+  opacity: 0; animation: rise .95s var(--ease-out) forwards;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.hero__eyebrow { animation-delay: .55s; }
+.hero__title { font-size: var(--fs-h1); line-height: .95; max-width: 15ch; }
+.hero__title span { display: block; }
+.hero__title span:nth-child(1) { animation-delay: .75s; }
+.hero__title span:nth-child(2) { animation-delay: .88s; color: var(--steel-100); opacity: .82; }
+.hero__lead { max-width: 54ch; font-size: var(--fs-lead); color: var(--steel-300); animation-delay: 1.05s; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: .8rem; animation-delay: 1.2s; }
+.hero__aside { animation-delay: 1.35s; }
+
+.hero__specs { display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-7);
+  padding-top: var(--space-5); border-top: 1px solid var(--line); }
+.hero__spec { display: grid; gap: .2rem; }
+.hero__spec b { font-family: var(--font-display); font-size: 1rem; }
+.hero__spec span { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--steel-500); }
+
+.hero__scroll {
+  position: absolute; right: 0; bottom: 0; display: grid; justify-items: center; gap: .8rem;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--steel-500); animation-delay: 1.5s;
+}
+.hero__scroll i { display: block; width: 1px; height: 56px; background: var(--line-strong); position: relative; overflow: hidden; }
+.hero__scroll i::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 40%;
+  background: var(--weld-500); animation: scroll-run 2.4s var(--ease-in-out) infinite; }
+@keyframes scroll-run { 0% { transform: translateY(-100%); } 100% { transform: translateY(250%); } }
+
+/* ============================== PROBLEMA ============================== */
+.problem__lead { font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.4rem, 1rem + 1.9vw, 2.5rem); line-height: 1.22;
+  letter-spacing: -.02em; max-width: 26ch; }
+.problem__lead em { font-style: normal; color: var(--weld-500); }
+.problem__notes { display: grid; gap: var(--space-5); align-content: start; }
+.problem__note { display: grid; gap: .35rem; padding-left: var(--space-5);
+  border-left: 1px solid var(--line); }
+.problem__note b { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--weld-500); }
+.problem__note p { color: var(--text-muted); }
+
+/* ============================== PROCESSO ============================== */
+.process { display: grid; gap: 0; position: relative; }
+.process__step {
+  display: grid; grid-template-columns: 110px minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5); align-items: start;
+  padding: var(--space-6) 0; border-top: 1px solid var(--line);
+  position: relative;
+}
+.process__step:last-child { border-bottom: 1px solid var(--line); }
+.process__step::before {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%;
+  background: var(--weld-500); transform: scaleX(0); transform-origin: left;
+  transition: transform 1.2s var(--ease-out);
+}
+.process__step.is-in::before { transform: scaleX(1); }
+.process__num { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .2em; color: var(--weld-500); }
+.process__title { font-size: clamp(1.3rem, 1rem + 1.2vw, 2rem); }
+.process__text { color: var(--text-muted); align-self: center; }
+
+/* ============================== SOBRE ============================== */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: center; }
+.about__text { display: grid; gap: var(--space-4); max-width: var(--maxw-text); }
+.about__text p { color: var(--text-muted); }
+.about__panel { position: relative; border: 1px solid var(--line); padding: var(--space-6);
+  background: linear-gradient(160deg, rgba(23,80,127,.18), transparent 60%); }
+.about__list { display: grid; gap: var(--space-4); }
+.about__list li { display: grid; gap: .25rem; padding-bottom: var(--space-4); border-bottom: 1px solid var(--line); }
+.about__list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.about__list b { font-family: var(--font-display); }
+.about__list span { color: var(--text-muted); font-size: .92rem; }
+.placeholder-note {
+  display: block;
+  padding: 1rem 1.1rem; border: 1px dashed var(--line-strong);
+  font-family: var(--font-mono); font-size: .74rem; line-height: 1.75; color: var(--steel-300);
+}
+.placeholder-note b { color: var(--weld-500); margin-right: .5rem; }
+.placeholder-note code { color: var(--steel-100); }
+
+/* ============================== FAIXA CTA ============================== */
+.band {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-5); padding: var(--space-6) var(--space-6);
+  border: 1px solid var(--line); background: linear-gradient(100deg, rgba(23,80,127,.25), transparent 70%);
+}
+.band__text { display: grid; gap: .3rem; }
+.band__text b { font-family: var(--font-display); font-size: clamp(1.1rem, .95rem + .9vw, 1.7rem); }
+.band__text span { color: var(--text-muted); font-size: .95rem; }
+.band__actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+
+/* ============================== ORCAMENTO ============================== */
+.quote { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--space-8); align-items: start; }
+.quote__aside { display: grid; gap: var(--space-5); position: sticky; top: calc(var(--header-h) + 2rem); }
+.quote__steps { display: grid; gap: .9rem; }
+.quote__steps li { display: flex; gap: .9rem; align-items: baseline; color: var(--steel-500);
+  font-size: .92rem; transition: color var(--dur); }
+.quote__steps li b { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .16em; }
+.quote__steps li.is-current { color: var(--white); }
+.quote__steps li.is-current b { color: var(--weld-500); }
+.quote__steps li.is-done { color: var(--steel-300); }
+
+.form { border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.form__progress { height: 2px; background: var(--line); }
+.form__progress i { display: block; height: 100%; width: 33.33%; background: var(--weld-500);
+  transition: width var(--dur-slow) var(--ease-out); }
+.form__stage { display: none; padding: var(--space-6); gap: var(--space-5); }
+.form__stage.is-active { display: grid; animation: rise .5s var(--ease-out); }
+.form__stage-head { display: grid; gap: .3rem; }
+.form__stage-head h3 { font-size: 1.35rem; }
+.form__stage-head p { color: var(--text-muted); font-size: .93rem; }
+.form__nav { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: space-between;
+  padding: var(--space-5) var(--space-6); border-top: 1px solid var(--line); }
+.form__row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.form__result { display: none; padding: var(--space-8) var(--space-6); text-align: center; gap: var(--space-4); }
+.form__result.is-active { display: grid; justify-items: center; animation: rise .6s var(--ease-out); }
+.form__result svg { color: var(--success); }
+.form__result p { color: var(--text-muted); max-width: 42ch; }
+.form__protocol { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .16em;
+  padding: .5rem .9rem; border: 1px solid var(--line-strong); color: var(--weld-500); }
+
+/* ============================== MAPA ============================== */
+.area { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--space-7); align-items: center; }
+.area__map { aspect-ratio: 16/10; border: 1px solid var(--line); display: grid; place-items: center;
+  background: var(--steel-900); color: var(--steel-500); font-family: var(--font-mono); font-size: .78rem; }
+.area__map iframe { width: 100%; height: 100%; border: 0; }
+
+/* ============================== FOOTER ============================== */
+.footer { background: var(--steel-950); border-top: 1px solid var(--line); padding-block: var(--space-8) var(--space-6); }
+.footer__top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: var(--space-7); }
+.footer__brand { display: grid; gap: var(--space-4); align-content: start; max-width: 34ch; }
+.footer__logo { display: block; width: min(260px, 100%); }
+.footer__logo img { width: 100%; height: auto; }
+.footer__tagline { color: var(--text-muted); font-size: .95rem; }
+.footer__col h4 { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--steel-500); font-weight: 500; margin-bottom: var(--space-4); }
+.footer__col ul { display: grid; gap: .7rem; }
+.footer__col a { color: var(--steel-300); font-size: .93rem; transition: color var(--dur); }
+.footer__col a:hover { color: var(--weld-500); }
+.footer__bottom { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between;
+  align-items: center; margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--line);
+  font-size: .82rem; color: var(--steel-500); }
+
+/* ============================== FAIXA DE IMAGEM ==============================
+   Respiro entre seções densas. A foto ocupa a largura toda; o texto fica
+   ancorado embaixo, sobre o trecho mais escuro do véu. */
+.bandshot {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: clamp(340px, 46vw, 560px);
+  display: grid; align-items: end;
+  padding-block: var(--space-8) var(--space-7);
+}
+.bandshot__img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 55%;
+  filter: saturate(.85) contrast(1.08) brightness(1.22);
+}
+.bandshot__veil {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10,12,34,.82) 0%, rgba(10,12,34,.18) 42%, rgba(10,12,34,.88) 100%),
+    linear-gradient(90deg, rgba(10,12,34,.92) 0%, rgba(10,12,34,.34) 48%, rgba(10,12,34,0) 78%);
+}
+.bandshot__inner { display: grid; gap: var(--space-4); }
+.bandshot__title { font-size: clamp(1.7rem, 1.2rem + 2.2vw, 3rem); max-width: 16ch; }
+.bandshot__text { color: var(--steel-300); max-width: 46ch; font-size: var(--fs-lead); }

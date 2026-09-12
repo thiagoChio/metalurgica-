@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#1E2452"/><stop offset="100%" stop-color="#08091C"/></linearGradient>
+    <pattern id="g" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,.05)"/></pattern></defs>
+  <rect width="1200" height="630" fill="url(#b)"/><rect width="1200" height="630" fill="url(#g)"/>
+  <path d="M80 470 L300 350 L520 470 L740 350 L960 470 L1120 400" fill="none" stroke="#A7ADC4" stroke-width="4"/>
+  <path d="M80 530 H1120" stroke="#F4C93E" stroke-width="3"/>
+  <text x="80" y="230" fill="#fff" font-family="Space Grotesk,sans-serif" font-size="72" font-weight="700">CORREA METALÚRGICA</text>
+  <text x="80" y="312" fill="#A7ADC4" font-family="Space Grotesk,sans-serif" font-size="52" font-weight="600">Estruturas metálicas sob medida</text>
+  <text x="80" y="140" fill="#F4C93E" font-family="monospace" font-size="22" letter-spacing="8">CUIABÁ • VÁRZEA GRANDE</text>
+</svg>

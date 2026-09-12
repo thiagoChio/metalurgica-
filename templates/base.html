@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#061420">
+
+<title>{% block title %}Estruturas Metálicas em {{ company.city }} | {{ company.name }}{% endblock %}</title>
+<meta name="description" content="{{ company.meta_description }}">
+<link rel="canonical" href="{{ company.domain }}/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{{ company.name }}">
+<meta property="og:title" content="Estruturas Metálicas em {{ company.city }} | {{ company.name }}">
+<meta property="og:description" content="{{ company.meta_description }}">
+<meta property="og:url" content="{{ company.domain }}/">
+<meta property="og:image" content="{{ company.domain }}/static/img/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/static/img/marca/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="/static/img/marca/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/layout.css">
+<link rel="stylesheet" href="/static/css/components.css">
+<link rel="stylesheet" href="/static/css/sections.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
+
+{# Dados estruturados: apenas campos realmente preenchidos vão para o schema. #}
+<script type="application/ld+json">
+{{ structured_data | tojson }}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+{% include "partials/header.html" %}
+<main id="conteudo">{% block content %}{% endblock %}</main>
+{% include "partials/footer.html" %}
+{% include "partials/whatsapp.html" %}
+{% include "partials/modal.html" %}
+<div class="cursor" data-cursor aria-hidden="true"><span data-cursor-label></span></div>
+<script type="module" src="/static/js/main.js"></script>
+</body>
+</html>

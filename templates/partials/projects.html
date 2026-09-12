@@ -1,0 +1,34 @@
+<section class="section section--dark" id="projetos">
+  <div class="shell">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow">Portfólio</p>
+        <h2 class="section-head__title" data-reveal>Projetos que falam por nós.</h2>
+      </div>
+      <p class="section-head__text" data-reveal>
+        Clique em um projeto para ver materiais e finalidade.
+      </p>
+    </div>
+
+    <div class="card-grid card-grid--2 stagger" data-reveal-group>
+      {% for projeto in content.projects %}
+      <button class="project" type="button"
+              data-project="{{ projeto.slug }}"
+              data-cursor-hover="Ver projeto"
+              aria-haspopup="dialog"
+              aria-label="Abrir projeto {{ projeto.title }}">
+        <span class="project__media">
+          <img src="{{ projeto.cover }}" alt="{{ projeto.title }} — {{ projeto.summary }}"
+               loading="lazy" decoding="async" width="1200" height="800">
+          <span class="project__veil" aria-hidden="true"></span>
+        </span>
+        <span class="project__body">
+          <span class="project__cat">{{ projeto.category }}</span>
+          <span class="project__title">{{ projeto.title }}</span>
+          <span class="project__meta">{{ projeto.location }}</span>
+        </span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>

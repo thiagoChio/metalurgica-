@@ -1,0 +1,107 @@
+/* =============================================================
+   RESPONSIVO — o mobile tem composicao propria, nao e o desktop
+   encolhido. Ordem, densidade e hierarquia mudam de verdade.
+   ============================================================= */
+
+/* ------------------------------------------------- ate 1200px (notebook) */
+@media (max-width: 1200px) {
+  .card-grid--4 { grid-template-columns: repeat(3, 1fr); }
+  .footer__top { grid-template-columns: 1fr 1fr 1fr; }
+  .footer__brand { grid-column: 1 / -1; max-width: none; }
+}
+
+/* ------------------------------------------------------ ate 1024px (tablet) */
+@media (max-width: 1024px) {
+  :root { --header-h: 76px; --header-h-compact: 62px; }
+
+  .nav { display: none; }
+  .burger { display: grid; }
+  .header__actions .btn--desktop { display: none; }
+
+  .card-grid--4, .card-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .section-head--split { grid-template-columns: 1fr; align-items: start; }
+  .about, .quote, .area { grid-template-columns: 1fr; }
+  /* O formulario vem antes do painel lateral: no celular ninguem deve rolar
+     tres blocos de apoio para chegar ao campo que gera o lead. */
+  .quote { display: flex; flex-direction: column; }
+  .quote__aside { position: static; order: 2; }
+  .quote .form { order: 1; }
+  .modal__grid { grid-template-columns: 1fr; }
+  .project--tall { grid-row: auto; }
+  .project--tall .project__media { aspect-ratio: 4/3; }
+  .process__step { grid-template-columns: 72px minmax(0, 1fr); }
+  .process__text { grid-column: 2; }
+  .hero__scroll { display: none; }
+}
+
+/* ------------------------------------------------------- ate 720px (mobile) */
+@media (max-width: 720px) {
+  :root { --section-y: 4rem; }
+
+  /* No celular o hero respira: altura minima menor, titulo com entrelinha
+     propria (a de desktop encosta quando o titulo quebra em 4 linhas). */
+  .hero {
+    min-height: auto; align-items: center;
+    padding-block: calc(var(--header-h) + var(--space-6)) var(--space-6);
+  }
+  .hero__inner { gap: var(--space-5); }
+  .hero__title { font-size: clamp(1.9rem, 8.4vw, 2.7rem); line-height: 1.08; max-width: 16ch; }
+  .hero__lead { font-size: 1rem; max-width: 42ch; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  /* Rótulo longo cabia em uma linha só no desktop; no celular precisa de
+     menos entreletra para não quebrar. */
+  .hero__actions .btn { justify-content: center; letter-spacing: .05em; font-size: .82rem; }
+
+  /* Quatro selos viram dois: no celular o que importa e o CTA acima da dobra. */
+  .hero__specs { gap: var(--space-4); }
+  .hero__spec { flex: 1 1 45%; }
+  .hero__spec:nth-child(n + 3) { display: none; }
+  .hero__spec b { font-size: .88rem; }
+  .hero__spec span { font-size: .58rem; }
+
+  /* Cards em coluna unica: no celular, largura cheia le melhor que grade. */
+  .card-grid--4, .card-grid--3, .card-grid--2 { grid-template-columns: 1fr; }
+  .service { padding: var(--space-5) var(--space-4); }
+  .value { padding: var(--space-5) var(--space-4); }
+
+  .choice-grid { grid-template-columns: 1fr 1fr; }
+  .form__row { grid-template-columns: 1fr; }
+  .form__stage, .form__nav { padding: var(--space-5) var(--space-4); }
+  .form__nav .btn { flex: 1 1 auto; justify-content: center; }
+  .btn { min-height: 50px; }
+
+  .process__step { grid-template-columns: 56px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-5) 0; }
+  .band { flex-direction: column; align-items: flex-start; padding: var(--space-5) var(--space-4); }
+  .band__actions { width: 100%; }
+  .band__actions .btn { flex: 1 1 auto; justify-content: center; }
+
+  .footer__top { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+
+  /* Link de 18px de altura é impossível de acertar com o polegar.
+     No celular todo link de lista vira alvo de 44px. */
+  .footer__col ul { gap: 0; }
+  .footer__col li > a,
+  .footer__col li > span { display: flex; align-items: center; min-height: 44px; }
+
+  /* WhatsApp vira alvo compacto para caber no alcance do polegar. */
+  .wa { padding: .8rem; }
+  .wa__label { display: none; }
+
+  .modal__dialog { max-height: 92vh; }
+  .modal__body { padding: 0 var(--space-4) var(--space-6); }
+  .modal__figure { margin-inline: calc(var(--space-4) * -1); }
+}
+
+/* ------------------------------------------------------ telas muito estreitas */
+@media (max-width: 380px) {
+  :root { --gutter: 1rem; }
+  .choice-grid { grid-template-columns: 1fr; }
+  .brand__tag { display: none; }
+}
+
+/* ------------------------------------------------------------- impressao */
+@media print {
+  .header, .wa, .cursor, .hero__canvas, .mobile-panel { display: none !important; }
+  body { background: #fff; color: #000; }
+}

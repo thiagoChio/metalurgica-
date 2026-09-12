@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  {# A ordem abaixo E a narrativa de scroll: necessidade -> solucao -> prova
+     -> metodo -> empresa -> objecoes -> conversao. Mudar a ordem muda o argumento. #}
+  {% include "partials/hero.html" %}
+  {% include "partials/problem.html" %}
+  {% include "partials/services.html" %}
+  {% include "partials/values.html" %}
+  {% include "partials/band-image.html" %}
+  {% include "partials/projects.html" %}
+  {% include "partials/process.html" %}
+  {% include "partials/about.html" %}
+  {% include "partials/testimonials.html" %}
+  {% include "partials/faq.html" %}
+  {% include "partials/quote.html" %}
+  {% include "partials/area.html" %}
+{% endblock %}

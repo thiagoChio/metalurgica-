@@ -1,0 +1,22 @@
+<section class="section section--light" id="diferenciais">
+  <div class="shell">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow">Por que contratar</p>
+        <h2 class="section-head__title" data-reveal>O que muda o resultado final.</h2>
+      </div>
+      <p class="section-head__text" data-reveal>
+        Decisões técnicas que aparecem na peça depois de instalada.
+      </p>
+    </div>
+    <div class="card-grid card-grid--3 stagger" data-reveal-group>
+      {% for item in content.differentials %}
+      <article class="value">
+        <span class="value__key">{{ "%02d"|format(loop.index) }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

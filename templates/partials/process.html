@@ -1,0 +1,35 @@
+<section class="section section--deep" id="processo">
+  <div class="shell">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow">Processo</p>
+        <h2 class="section-head__title" data-reveal>Como transformamos sua ideia em estrutura.</h2>
+      </div>
+      <p class="section-head__text" data-reveal>
+        Do primeiro contato à peça instalada.
+      </p>
+    </div>
+
+    <ol class="process">
+      {% for etapa in content.process %}
+      <li class="process__step" data-step>
+        <span class="process__num">{{ etapa.number }}</span>
+        <h3 class="process__title">{{ etapa.title }}</h3>
+        <p class="process__text">{{ etapa.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+
+    <div class="band" data-reveal style="margin-top: var(--space-7)">
+      <div class="band__text">
+        <b>Tem uma ideia e não sabe por onde começar?</b>
+        <span>Mande uma foto do local. A gente te orienta.</span>
+      </div>
+      <div class="band__actions">
+        <a class="btn btn--sm" href="{{ content.whatsapp_for_service() }}" target="_blank" rel="noopener">
+          <span class="btn__label">Falar com quem executa</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{# Depoimentos so aparecem quando forem reais. Nada e inventado aqui. #}
+{% if content.testimonials %}
+<section class="section section--tint" id="depoimentos">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Clientes</p>
+      <h2 data-reveal>Quem contratou, recomenda.</h2>
+    </div>
+    <div class="card-grid card-grid--3 stagger" data-reveal-group>
+      {% for depoimento in content.testimonials %}
+      <article class="value">
+        <span class="value__key">{{ depoimento.project_type }}</span>
+        <p>&ldquo;{{ depoimento.text }}&rdquo;</p>
+        <h3 style="font-size:1rem">{{ depoimento.name }} — {{ depoimento.city }}</h3>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

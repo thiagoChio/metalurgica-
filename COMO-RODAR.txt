@@ -1,0 +1,44 @@
+CORREA METALURGICA — como abrir o site no seu computador
+=========================================================
+
+SAO DOIS ATALHOS. A DIFERENCA E SO UMA:
+
+  iniciar.bat      -> para VOCE trabalhar.
+                      Mostra os lembretes de obra (os avisos amarelos
+                      "[ COMPLETAR ]" dizendo o que ainda falta preencher).
+
+  apresentar.bat   -> para MOSTRAR AO CLIENTE.
+                      Esconde os lembretes. O site aparece limpo, do jeito
+                      que vai ao ar.
+
+O site e exatamente o mesmo nos dois. So muda se os lembretes aparecem.
+
+
+WINDOWS
+  1. Descompacte esta pasta (nao rode de dentro do .zip).
+  2. De dois cliques no atalho que voce quer.
+  3. Na primeira vez ele prepara o ambiente (1 a 2 minutos) e depois
+     abre sozinho o navegador em http://127.0.0.1:8000
+  4. Para desligar: feche a janela preta.
+
+  Nao tem Python? Instale em https://www.python.org/downloads/
+  Na tela de instalacao, MARQUE a caixa "Add Python to PATH".
+
+MAC / LINUX
+  ./iniciar.sh       (trabalhar)
+  ./apresentar.sh    (mostrar ao cliente)
+
+
+O QUE FUNCIONA RODANDO NO SEU PC
+  - Site completo, com as fotos e a marca reais.
+  - Formulario de orcamento gravando de verdade em
+    data/quotes/quotes.jsonl (um pedido por linha, com protocolo).
+  - Anexos enviados pelo formulario em data/uploads/.
+  - Botoes de WhatsApp abrindo a conversa com o numero real.
+
+ONDE MEXER NO CONTEUDO
+  app/content/company.py     contato, endereco, redes, SEO
+  app/content/catalog.py     servicos, diferenciais, processo
+  app/content/portfolio.py   projetos, depoimentos, numeros, FAQ
+
+  O README.md tem a lista do que ainda falta confirmar.

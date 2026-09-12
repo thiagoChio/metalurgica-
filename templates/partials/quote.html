@@ -1,0 +1,162 @@
+<section class="section section--deep" id="orcamento">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Orçamento</p>
+      <h2 data-reveal>Vamos tirar seu projeto do papel?</h2>
+      <p class="section-head__text" data-reveal>
+        Três passos. Leva menos de um minuto.
+      </p>
+    </div>
+
+    <div class="quote">
+      <aside class="quote__aside" data-reveal>
+        <ol class="quote__steps" data-form-steps>
+          <li data-step-index="0"><b>01</b> O que você precisa</li>
+          <li data-step-index="1"><b>02</b> Sobre o projeto</li>
+          <li data-step-index="2"><b>03</b> Como falamos com você</li>
+        </ol>
+        <hr class="rule">
+        <div class="placeholder-note">
+          <b>Prefere conversar?</b> O WhatsApp responde mais rápido.
+        </div>
+        <a class="btn btn--ghost" href="{{ content.whatsapp_for_service() }}" target="_blank" rel="noopener">
+          <span class="btn__label">Falar no WhatsApp</span>
+        </a>
+      </aside>
+
+      <form class="form" data-quote-form novalidate
+            action="/api/orcamento" method="post" enctype="multipart/form-data">
+        <div class="form__progress"><i data-form-progress></i></div>
+
+        <!-- ETAPA 1 ------------------------------------------------------ -->
+        <fieldset class="form__stage is-active" data-stage="0">
+          <legend class="visually-hidden">Etapa 1: tipo de serviço</legend>
+          <div class="form__stage-head">
+            <h3>O que você precisa?</h3>
+            <p>Se não souber, marque "Outro".</p>
+          </div>
+          <div class="field" data-field="service">
+            <div class="choice-grid" role="radiogroup" aria-label="Tipo de serviço">
+              {% for servico in content.services %}
+              <label class="choice">
+                <input type="radio" name="service" value="{{ servico.slug }}" data-service-choice>
+                <span class="choice__box"><b>{{ servico.title }}</b><small>{{ servico.number }}</small></span>
+              </label>
+              {% endfor %}
+              <label class="choice">
+                <input type="radio" name="service" value="outro" data-service-choice>
+                <span class="choice__box"><b>Outro</b><small>09</small></span>
+              </label>
+            </div>
+            <p class="field__error" data-error="service"></p>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 2 ------------------------------------------------------ -->
+        <fieldset class="form__stage" data-stage="1">
+          <legend class="visually-hidden">Etapa 2: detalhes do projeto</legend>
+          <div class="form__stage-head">
+            <h3>Conte um pouco sobre o projeto.</h3>
+            <p>Quanto mais detalhe, menos idas e vindas.</p>
+          </div>
+          <div class="field" data-field="description">
+            <label class="field__label" for="q-description">Descrição do projeto</label>
+            <textarea class="field__control" id="q-description" name="description"
+                      placeholder="Ex.: cobertura sobre a garagem, 6x4m, já existe laje de um lado."></textarea>
+            <p class="field__error" data-error="description"></p>
+          </div>
+          <div class="form__row">
+            <div class="field" data-field="measurements">
+              <label class="field__label" for="q-measurements">Medidas aproximadas (opcional)</label>
+              <input class="field__control" id="q-measurements" name="measurements"
+                     placeholder="Ex.: 6m x 4m, pé-direito 2,8m">
+              <p class="field__error" data-error="measurements"></p>
+            </div>
+            <div class="field" data-field="deadline">
+              <label class="field__label" for="q-deadline">Prazo desejado</label>
+              <select class="field__control" id="q-deadline" name="deadline">
+                <option value="nao-sei">Ainda não sei</option>
+                <option value="urgente">O quanto antes</option>
+                <option value="30-dias">Até 30 dias</option>
+                <option value="60-dias">Até 60 dias</option>
+                <option value="sem-pressa">Sem pressa</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Fotos, croqui ou projeto (opcional)</span>
+            <label class="dropzone" data-dropzone>
+              <input type="file" name="files" multiple accept="image/jpeg,image/png,image/webp,application/pdf" data-file-input>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"
+                      stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <b>Arraste aqui ou toque para escolher</b>
+              <small>JPG, PNG, WEBP ou PDF — até 10 MB</small>
+            </label>
+            <div class="file-list" data-file-list></div>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 3 ------------------------------------------------------ -->
+        <fieldset class="form__stage" data-stage="2">
+          <legend class="visually-hidden">Etapa 3: contato</legend>
+          <div class="form__stage-head">
+            <h3>Como podemos entrar em contato?</h3>
+            <p>Usados só para responder este orçamento.</p>
+          </div>
+          <div class="field" data-field="name">
+            <label class="field__label" for="q-name">Nome</label>
+            <input class="field__control" id="q-name" name="name" autocomplete="name" placeholder="Seu nome">
+            <p class="field__error" data-error="name"></p>
+          </div>
+          <div class="form__row">
+            <div class="field" data-field="whatsapp">
+              <label class="field__label" for="q-whatsapp">WhatsApp</label>
+              <input class="field__control" id="q-whatsapp" name="whatsapp" inputmode="tel"
+                     autocomplete="tel" placeholder="(00) 00000-0000" data-phone-mask>
+              <p class="field__error" data-error="whatsapp"></p>
+            </div>
+            <div class="field" data-field="city">
+              <label class="field__label" for="q-city">Cidade</label>
+              <input class="field__control" id="q-city" name="city"
+                     autocomplete="address-level2" placeholder="Onde o serviço será feito">
+              <p class="field__error" data-error="city"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- SUCESSO ------------------------------------------------------ -->
+        <div class="form__result" data-form-result>
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="m7.5 12.4 3 3 6-6.4" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <h3>Recebemos sua solicitação.</h3>
+          <p>Entramos em contato pelo WhatsApp informado.</p>
+          <span class="form__protocol" data-protocol></span>
+          <a class="btn btn--ghost btn--sm" href="{{ content.whatsapp_for_service() }}" target="_blank" rel="noopener">
+            <span class="btn__label">Adiantar pelo WhatsApp</span>
+          </a>
+        </div>
+
+        <div class="form__nav" data-form-nav>
+          <button class="btn btn--ghost" type="button" data-prev hidden>
+            <span class="btn__label">Voltar</span>
+          </button>
+          <button class="btn" type="button" data-next>
+            <span class="btn__label">Continuar</span>
+            <svg class="btn__arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </button>
+          <button class="btn" type="submit" data-submit hidden>
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span class="btn__label">Solicitar orçamento</span>
+          </button>
+        </div>
+        <p class="field__error" data-error="geral" style="padding:0 var(--space-6) var(--space-5)"></p>
+      </form>
+    </div>
+  </div>
+</section>
